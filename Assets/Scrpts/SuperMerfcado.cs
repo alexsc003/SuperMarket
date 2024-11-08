@@ -21,7 +21,7 @@ public class SuperMerfcado : MonoBehaviour
     public float distanciaDesactivo;
 
     public int i;
-    // Update is called once per frame
+
     public void ElegirMueble(int amount)
     {
         i = amount;
@@ -33,6 +33,14 @@ public class SuperMerfcado : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
+        if (Input.GetKey(KeyCode.Q))
+        {
+            objectoCreado.transform.Rotate(0.0f, -0.5f, 0.0f);
+        }
+        if (Input.GetKey(KeyCode.E))
+        {
+            objectoCreado.transform.Rotate(0.0f, 0.5f, 0.0f);
+        }
         if (Physics.Raycast(ray, out hit))
         {
             objectoCreado.transform.position = hit.point;
@@ -47,7 +55,6 @@ public class SuperMerfcado : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                ElegirMueble();
                 objectoCreado = Instantiate(muebles[i], Vector3.zero, Quaternion.identity);
             }
         }
